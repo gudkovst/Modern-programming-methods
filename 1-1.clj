@@ -1,17 +1,11 @@
-(defn set2end [lst elem]
-      (if (= (count lst) 0)
-             (list elem)
-             (cons (first lst) (set2end (rest lst) elem))))
-
-
 (defn last-elem [lst]
       (if (= (count lst) 1)
-             (first lst)
-             (last-elem (rest lst))))
+          (first lst)
+          (last-elem (rest lst))))
 
 
 (defn shift-alf [alfabet]
-      (set2end (rest alfabet) (first alfabet)))
+      (concat (rest alfabet) (list (first alfabet))))
 
 
 (defn construct-words [cur-word alf n end-litera]
