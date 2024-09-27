@@ -7,7 +7,7 @@
 (defn integrals [f h] (map first (iterate (fn [[prev x f]] [(+ prev (calc-col (f x) (f (+ x h)) h)) (+ x h) f]) [0 0 f])))
 
 
-(defn calc-integral [f x] (if (< x 0) "incorrect argument"
+(defn calc-integral [f x] (if (< x 0) (* -1 (calc-integral f (* -1 x)))
                                       (let [h 0.025
                                             k (int (/ x h))
                                             s (* k h)] (+ (calc-col (f s) (f x) (- x s)) (nth (integrals f h) k)))))

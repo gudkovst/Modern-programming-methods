@@ -10,7 +10,7 @@
                                                                                          (calc-on-grid f h l)))))))
 
 
-(def calc-integral (memoize (fn [f x] (if (< x 0) "incorrect argument"
+(def calc-integral (memoize (fn [f x] (if (< x 0) (* -1 (calc-integral f (* -1 x)))
                                                   (let [h 0.25
                                                         k (int (/ x h))
                                                         s (* k h)]
